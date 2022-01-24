@@ -9,17 +9,15 @@ const install = function(_Vue){
 
   Vue.mixin({
     beforeCreate() {
-     
       if(this.$options.router){
-        console.log('name',this.$options.name,this.$options.router)
-        this._routerRoot = this;
-        this._router = this.$options.router
+        this._routerRoot = this;//将当前根实例放到了_routerRoot
+        this._router = this.$options.router//给根增加_router
+        // 当前用户的router属性
+        this._router.init(this) 
       }else{
-        console.log('儿子')
-        console.log(this.$parent)
-        this._routerRoot = this.$parent && this.$parent._routerRoot
-        console.log(this._routerRoot.__router)
+        this._routerRoot = this.$parent && this.$parent._routerRoot     //所有组件都有this._routerRoot属性
       }
+      //console.log(this._routerRoot._router)
     },
   })
 }

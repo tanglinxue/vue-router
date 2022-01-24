@@ -34,5 +34,6 @@ let routes = [
 Vue.use(VueRouter)
 
 export default new VueRouter({
+  mode:'hash',
   routes
 })
