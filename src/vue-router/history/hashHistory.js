@@ -1,7 +1,7 @@
 import History from './base';
 
 const ensureSlash = ()=>{
-  console.log(window.location)
+  //console.log(window.location)
   if(window.location.hash){
     return 
   }
@@ -15,7 +15,7 @@ export default class HashHistory extends History{
       ensureSlash()
     }
     getCurrentLocation(){
-      console.log(window.location.hash)
+      //console.log(window.location.hash)
       return window.location.hash.slice(1)
     }
     setupListener(){

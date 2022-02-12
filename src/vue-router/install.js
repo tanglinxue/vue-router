@@ -2,7 +2,7 @@ let Vue = null
 import RouterLink from './components/router-link'
 import RouterView from './components/router-view'
 const install = function(_Vue){
-  console.log('install')
+ 
   Vue=_Vue
   Vue.component('router-link',RouterLink)
   Vue.component('router-view',RouterView)
@@ -14,8 +14,6 @@ const install = function(_Vue){
         this._router = this.$options.router//给根增加_router
         // 当前用户的router属性
         this._router.init(this) 
-        console.log('打印')
-        console.log(this._router.history.current)
         // 如果用户更改了current是没有效果的需要把_route也进行更新
         Vue.util.defineReactive(this,'_route',this._router.history.current)
       }else{
