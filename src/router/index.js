@@ -18,13 +18,13 @@ let routes = [
       {
         path:'a',
         component:{
-          render:h=><h1>about a</h1>
+          render:()=><h1>about a</h1>
         }
       },
       {
         path:'b',
         component:{
-          render:h=><h1>about b</h1>
+          render:()=><h1>about b</h1>
         }
       }
     ]
@@ -33,7 +33,24 @@ let routes = [
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+
+let router = new VueRouter({
   mode:'hash',
   routes
 })
+
+router.beforeEach((to,from,next)=>{
+  setTimeout(()=>{
+    console.log('1.beforeEach')
+    next()
+  },1000)
+})
+
+router.beforeEach((to,from,next)=>{
+  setTimeout(()=>{
+    console.log('2.beforeEach')
+    next()
+  },2000)
+})
+
+export default router

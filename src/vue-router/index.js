@@ -18,6 +18,8 @@ class VueRouter{
         this.history = new BrowserHistory(this)
         break;
     }
+
+    this.beforeHooks = []
   }
   match(location){
     return this.matcher.match(location)
@@ -37,6 +39,14 @@ class VueRouter{
       console.log(App._route,'------') //更新视图的操作，当current变化后再次更新
       App._route = route
     })
+  }
+  push(location){
+    //const history = this.history
+      // 跳转路径，根据路径获取对应的记录
+    window.location.hash = location
+  }
+  beforeEach(fn){
+    this.beforeHooks.push(fn)
   }
 }
 
